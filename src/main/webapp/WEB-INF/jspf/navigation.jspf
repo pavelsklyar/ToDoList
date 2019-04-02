@@ -1,0 +1,20 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<nav>
+    <ul class="nav-ul">
+        <li class="nav-li">
+            <a href="/current/" class="nav-a">Текущие</a>
+        </li>
+        <li class="nav-li">
+            <a href="/completed/" class="nav-a">Завершённые</a>
+        </li>
+        <li class="nav-li">
+            <a href="/add/" class="nav-a">Добавить</a>
+        </li>
+        <li class="nav-li">
+            <a href="/profile/" class="nav-a">Профиль</a>
+        </li>
+        <li class="nav-li">
+            <a href="/settings/" class="nav-a">Настройки</a>
+        </li>
+    </ul>
+</nav>
