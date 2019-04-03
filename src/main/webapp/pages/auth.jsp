@@ -14,21 +14,36 @@
     <title>Авторизация</title>
 </head>
 <body>
-<div class="d-flex flex-row justify-content-center align-items-center w-100 h-100">
-    <form action="/" class="auth-form d-flex flex-column mb-2" method="post">
-        <h2>Авторизация</h2>
-        <input type="email" name="email" class="input-small mb-2 p-1 pl-2" placeholder="email">
-        <input type="password" name="password" class="input-medium mb-2 p-1 pl-2" placeholder="пароль">
-        <input type="submit" value="Авторизоваться" class="btn btn-primary w-50 mx-auto">
-    </form>
-
-    <form action="/" class="auth-form d-flex flex-column mb-2" method="post">
-        <h2>Регистрация</h2>
-        <input type="email" name="reg_email" class="input-small mb-2 p-1 pl-2" placeholder="email">
-        <input type="password" name="reg_password" class="input-medium mb-2 p-1 pl-2" placeholder="пароль">
-        <input type="password" name="reg_confirm_password" class="input-medium mb-2 p-1 pl-2" placeholder="пароль ещё раз">
-        <input type="submit" value="Зарегистрироваться" class="btn btn-primary w-50 mx-auto">
-    </form>
+<div class="page-container">
+    <div class="form-container">
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item">
+                <a class="nav-link" id="authorisation-tab" data-toggle="tab" href="#authorisation" role="tab" aria-controls="authorisation" aria-selected="true">Авторизация</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" id="registartion-tab" data-toggle="tab" href="#registration" role="tab" aria-controls="registration" aria-selected="false">Регистрация</a>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="authorisation" role="tabpanel" aria-labelledby="authorisation-tab">
+                <form action="/" class="auth-form d-flex flex-column mb-2 form-group" method="post">
+                    <h3>Авторизация</h3>
+                    <input type="email" name="email" class="form-control input-small mb-2 p-1 pl-2" placeholder="email">
+                    <input type="password" name="password" class="form-control input-medium mb-2 p-1 pl-2" placeholder="пароль">
+                    <input type="submit" value="Авторизоваться" class="btn w-auto mx-auto">
+                </form>
+            </div>
+            <div class="tab-pane fade show" id="registration" role="tabpanel" aria-labelledby="registartion-tab">
+                <form action="/" class="auth-form d-flex flex-column mb-2" method="post">
+                    <h3>Регистрация</h3>
+                    <input type="email" name="reg_email" class="form-control input-small mb-2 p-1 pl-2" placeholder="email">
+                    <input type="password" name="reg_password" class="form-control input-medium mb-2 p-1 pl-2" placeholder="пароль">
+                    <input type="password" name="reg_confirm_password" class="form-control input-medium mb-2 p-1 pl-2" placeholder="пароль ещё раз">
+                    <input type="submit" value="Зарегистрироваться" class="btn w-auto mx-auto">
+                </form>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
 </html>
