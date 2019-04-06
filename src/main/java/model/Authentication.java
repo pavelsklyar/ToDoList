@@ -1,8 +1,7 @@
 package model;
 
 import database.tables.Users;
-
-import javax.servlet.http.HttpSession;
+import entity.User;
 
 public class Authentication {
 

@@ -2,51 +2,203 @@
 <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<%--<script>--%>
+<%--    let doings = document.getElementsByClassName('doings-container');--%>
+
+<%--    for (let i = 0; i < doings.length; i++) {--%>
+<%--        const elem = doings[i];--%>
+<%--        if (elem.addEventListener) {--%>
+<%--            if ('onwheel' in document) {--%>
+<%--                // IE9+, FF17+, Ch31+--%>
+<%--                elem.addEventListener("wheel", onWheel);--%>
+<%--            } else if ('onmousewheel' in document) {--%>
+<%--                // устаревший вариант события--%>
+<%--                elem.addEventListener("mousewheel", onWheel);--%>
+<%--            } else {--%>
+<%--                // Firefox < 17--%>
+<%--                elem.addEventListener("MozMousePixelScroll", onWheel);--%>
+<%--            }--%>
+<%--        } else { // IE8---%>
+<%--            elem.attachEvent("onmousewheel", onWheel);--%>
+<%--        }--%>
+
+<%--        function onWheel(e) {--%>
+<%--            e.preventDefault();--%>
+<%--            console.log(e);--%>
+<%--            if (e.deltaY > 0) {--%>
+<%--                this.scrollLeft += 100;--%>
+<%--            } else {--%>
+<%--                this.scrollLeft -= 100;--%>
+<%--            }--%>
+<%--        }--%>
+<%--    }--%>
+<%--</script>--%>
 <style>
-    nav {
-        width: 100%;
-        font-size: 16pt;
+    :root{
+        --bg:#563d7c;
+        --white: #fff;
+        --light-white: #cbbde2;
+        --grey: #b3b3b3;
     }
 
-    .nav-ul {
-        width: 1000px;
-        margin: 0px auto;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: nowrap;
-        justify-content: space-around;
-    }
-
-    .nav-li {
-        list-style: none;
-    }
-
-    .nav-a {
-        text-decoration: none;
-        color: black;
-    }
-
-    .page-container{
+    .page-container {
         width: 100vw;
         height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
     }
-    .form-container{
+
+    .form-container {
         width: 320px;
         padding: 15px 10px;
         border-radius: 10px;
-        border: 1px solid rgba(20, 23, 89,.3)
+        border: 1px solid rgba(20, 23, 89, .3)
     }
-    .nav-tabs{
+
+    .nav-tabs {
         display: flex;
     }
-    form input[type="submit"]{
-        color: white;
-        background: rgb(20, 23, 89);
+
+    .navbar{
+        background: var(--bg);
     }
-    form input[type="submit"]:active, form input[type="submit"]:focus, form input[type="submit"]:hover{
+
+    form input[type="submit"] {
+        color: var(--white);
+        background: var(--bg);
+    }
+
+    form input[type="submit"]:active,
+    form input[type="submit"]:focus,
+    form input[type="submit"]:hover {
         color: white;
+    }
+
+    .nav-item {
+        display: flex;
+        align-items: center;
+    }
+
+    .addButton{
+        width: 40px;
+        height: 35px;
+        border-radius: 5px;
+        background: rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        font-size: 45px;
+        background-image: url(/img/add.svg);
+        background-size: 70%;
+        background-repeat: no-repeat;
+        background-position: center center;
+    }
+
+    .addButton:active, .addButton:hover, .addButton:focus{
+        color: var(--white);
+        text-decoration: none;
+    }
+
+    .card-do{
+        min-width: 300px;
+        width: 300px;
+        margin: 30px;
+    }
+
+    .card-do:last-child{
+        margin-right: 0px;
+    }
+
+    .btn-do{
+        border-top-left-radius: 0;
+        border-top-right-radius: 0;
+        color: var(--white);
+        background: var(--bg);
+    }
+
+    .status, .status-date, .edit, .delete{
+        min-height: 15px;
+        min-width: 15px;
+        margin: 0 10px 0 0;
+        background-repeat: no-repeat;
+        background-size: 100%;
+        background-position: center center;
+    }
+
+    .status{
+        background: var(--grey);
+    }
+
+    .status-date{
+        background-image: url(/img/clock.svg);
+    }
+
+    .status-red{
+        background: #ff5555;
+    }
+
+    .status-green{
+        background: #3bff65;
+    }
+
+    .status-yellow{
+        background: #ffee55;
+    }
+
+    .edit{
+        background-image: url(/img/pencil.svg);
+    }
+
+    .delete{
+        background-image: url(/img/trash.svg);
+    }
+
+    .doings-container{
+        min-width: 320px;
+        max-width: 95%;
+        overflow-x: scroll;
+    }
+
+    .doings-container::-webkit-scrollbar-track
+    {
+        -webkit-box-shadow: inset 0 0 6px var(--bg);
+        border-radius: 10px;
+        background-color: #F5F5F5;
+    }
+
+    .doings-container::-webkit-scrollbar
+    {
+        width: 12px;
+        background-color: #F5F5F5;
+    }
+
+    .doings-container::-webkit-scrollbar-thumb
+    {
+        border-radius: 10px;
+        -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,.3);
+        background-color: var(--bg);
+    }
+
+    .addForm{
+        max-width: 300px;
+        margin: 3rem auto;
+    }
+
+    .settings{
+        max-width: 300px;
+        margin: 3rem auto;
+    }
+
+    .settings-body{
+        border: none;
+    }
+
+    .btn-change{
+        background: var(--bg);
+        color: var(--white)
+    }
+
+    .btn-change:focus, .btn-change:hover{
+        background: var(--bg);
+        color: var(--white)
     }
 </style>

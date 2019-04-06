@@ -13,7 +13,7 @@ public class Settings extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/pages/settings.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/settings.jsp");
         requestDispatcher.forward(req, resp);
     }
 }

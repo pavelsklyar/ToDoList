@@ -1,20 +1,39 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<nav>
-    <ul class="nav-ul">
-        <li class="nav-li">
-            <a href="/current/" class="nav-a">Текущие</a>
-        </li>
-        <li class="nav-li">
-            <a href="/completed/" class="nav-a">Завершённые</a>
-        </li>
-        <li class="nav-li">
-            <a href="/add/" class="nav-a">Добавить</a>
-        </li>
-        <li class="nav-li">
-            <a href="/profile/" class="nav-a">Профиль</a>
-        </li>
-        <li class="nav-li">
-            <a href="/settings/" class="nav-a">Настройки</a>
-        </li>
-    </ul>
+<nav class="navbar navbar-expand-md navbar-dark">
+    <a class="navbar-brand" href="#">Logo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav w-100">
+            <li class="nav-item mx-md-2">
+                <a class="nav-link" href="/current/">Текущие</span></a>
+            </li>
+            <li class="nav-item mx-md-2">
+                <a class="nav-link" href="/completed/">Завершённые</a>
+            </li>
+            <div class="d-flex ml-md-auto flex-column flex-md-row">
+                <li class="nav-item">
+                    <a href="/add/" class="addButton mr-3"></a>
+                    <form class="form-inline my-2 my-lg-0 w-100 w-md-auto">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Поиск" aria-label="Search">
+                    </form>
+                </li>
+                <li class="nav-item dropdown ml-md-auto d-block d-md-flex">
+                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                       data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Профиль
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-md-right" aria-labelledby="navbarDropdown">
+                        <h6 class="dropdown-header text-left text-md-center">Имя пользователя</h6>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item text-left text-md-center" href="/settings/">Настройки</a>
+                        <a class="dropdown-item text-left text-md-center" href="/logout/">Выход</a>
+                    </div>
+                </li>
+            </div>
+        </ul>
+    </div>
 </nav>

@@ -1,7 +1,7 @@
 package database.tables;
 
 import database.DatabaseConnection;
-import model.User;
+import entity.User;
 
 import java.sql.*;
 

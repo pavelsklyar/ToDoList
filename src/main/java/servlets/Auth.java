@@ -2,7 +2,7 @@ package servlets;
 
 import database.tables.Users;
 import model.Authentication;
-import model.User;
+import entity.User;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,7 +18,7 @@ public class Auth extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/pages/auth.jsp");
+        RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/auth.jsp");
         requestDispatcher.forward(req, resp);
     }
 
@@ -35,13 +35,17 @@ public class Auth extends HttpServlet {
                 session.setMaxInactiveInterval(86400);  // 1 день
                 User user = Users.getUserByEmail(email);
 
-                assert user != null;
-                session.setAttribute("auth", true);
-                session.setAttribute("email", user.getEmail());
+                if (user != null) {
+                    session.setAttribute("auth", true);
+                    session.setAttribute("email", user.getEmail());
 
-                System.out.println("Пользователь успешно авторизован!");
-                System.out.println("user status: " + session.getAttribute("auth"));
-                System.out.println("user email: " + session.getAttribute("email"));
+                    System.out.println("Пользователь успешно авторизован!");
+                    System.out.println("user status: " + session.getAttribute("auth"));
+                    System.out.println("user email: " + session.getAttribute("email"));
+                }
+                else {
+                    System.out.println("Пользователя не существует!");
+                }
             }
             else {
                 req.setAttribute("error", "Вы ввели неверный логин и/или пароль!");
